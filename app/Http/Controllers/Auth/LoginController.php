@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -35,5 +37,37 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+    public function username(){
+        return 'username';
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        $user=User::where('username',$request->username)->first();
+        $isApproved=false;
+
+        if (!empty($user)) {
+            $isApproved = $user->isApproved;
+        }
+
+        if($isApproved){
+            return $this->guard()->attempt(
+                $this->credentials($request), $request->has('remember')
+            );
+        }else{
+            return false;
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/login');
     }
 }

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Member;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -27,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/register';
 
     /**
      * Create a new controller instance.
@@ -36,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('role');
     }
 
     /**
@@ -48,9 +51,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'role'=>'required|string',
+            'username'=>'required|string|max:255|unique:users',
+            'firstName'=>'required|string|max:255',
+            'lastName'=>'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'dob'=>'required|date',
+            'gender'=>'required|string',
+            'contact'=>'required|string',
+            'address'=>'required|string',
         ]);
     }
 
@@ -63,9 +73,49 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'role'=>$data['role'],
+            'username'=>$data['username'],
+            'firstName'=>$data['firstName'],
+            'lastName'=>$data['lastName'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'dob'=>$data['dob'],
+            'gender'=>$data['gender'],
+            'contact'=>$data['contact'],
+            'address'=>$data['address'],
         ]);
     }
+
+    protected function validateMember(array $data){
+        return Validator::make($data,[
+           'profession'=>'required|string',
+           'institution'=>'required|string',
+        ]);
+    }
+
+    protected function createMember(array $data,$user){
+        return Member::create([
+            'user_id'=>$user->id,
+            'profession'=>$data['profession'],
+            'institution'=>$data['institution'],
+        ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        if (auth()->guest()){
+
+            $this->validateMember($request->all());
+            $this->createMember($request->all(),$user);
+        }
+        //$this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
+
 }

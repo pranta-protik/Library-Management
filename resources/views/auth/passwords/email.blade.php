@@ -1,11 +1,17 @@
-@extends('layouts.app')
+@extends('templates.master')
 
-@section('content')
-<div class="container">
+@section('title')
+    Email
+    @endsection
+
+@section('body')
+<div class="container" style="margin-bottom: 180px;margin-top: 100px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                <div class="panel-heading text-center" style="font-size: large"><img src="../img/reset.png" alt="Avatar" class="avatar" style="height: 30px;width: 30px">
+                    <strong>Reset Password</strong>
+                </div>
 
                 <div class="panel-body">
                     @if (session('status'))

@@ -1,11 +1,15 @@
-@extends('layouts.app')
+@extends('templates.master')
 
-@section('content')
-<div class="container">
+@section('title')
+    Reset
+    @endsection
+
+@section('body')
+<div class="container" style="margin-top: 80px;margin-bottom: 100px">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                <div class="panel-heading text-center" style="font-size: large"><strong>Reset Password</strong></div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
