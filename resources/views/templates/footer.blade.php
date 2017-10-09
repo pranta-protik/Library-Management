@@ -23,7 +23,7 @@
         <div class="col-md-2 text-left col-md-offset-2">
             <p>&copy; Umesh Chandra<br>Public Library</p>
             <p>Postbox 9100</p>
-            <p>K.D. Ghos RD</p>
+            <p>K.D. Ghosh RD</p>
             <p>Mob: 01721342423</p>
         </div>
         </div>

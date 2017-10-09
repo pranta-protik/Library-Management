@@ -16,14 +16,20 @@
             <div class="collapse navbar-collapse" style="overflow-y: inherit;float: right" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav navbar-right">
-                    @if(auth()->guest()||(auth()->user()->role)=="Librarian")
+                    @if(auth()->user()&&(auth()->user()->role)=="Librarian")
                     <li>
-                        <a href="{{route('register')}}"><span class="glyphicon glyphicon-edit"></span>
-                            Register
+                        <a href="{{route('dashboard')}}">
+                            Dashboard
                         </a>
                     </li>
                     @endif
-
+                    @if(auth()->guest())
+                        <li>
+                            <a href="{{'register'}}"><span class="glyphicon glyphicon-edit"></span>
+                                Register
+                            </a>
+                        </li>
+                    @endif
                     @if(auth()->guest())
                     <li>
                         <a href="{{route('login')}}"><span class="glyphicon glyphicon-log-in"></span>

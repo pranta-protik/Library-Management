@@ -72,6 +72,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $isApproved=0;
+        if ($data['role']=='Librarian'){
+            $isApproved=1;
+        }
         return User::create([
             'role'=>$data['role'],
             'username'=>$data['username'],
@@ -80,6 +84,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'dob'=>$data['dob'],
+            'isApproved'=>$isApproved,
             'gender'=>$data['gender'],
             'contact'=>$data['contact'],
             'address'=>$data['address'],

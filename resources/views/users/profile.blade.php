@@ -16,7 +16,34 @@
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
 
-                            <img class="profile-img" src="img/profile.jpg" alt="Profile">
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Upload Image</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="file" name="image" id="image">
+                                            <br>
+                                            <input type="submit" name="upload" id="upload" value="Upload" class="btn btn-default">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="containerProfile col-md-offset-3">
+                                <a data-toggle="modal" data-target="#myModal" href="#"><img class="profile-img" src="img/profile.jpg" alt="Profile"></a>
+                                <div class="middleProfile">
+                                    <a data-toggle="modal" data-target="#myModal" href="#" style="text-decoration: none;color: white">Change</a>
+                                </div>
+                            </div>
 
                             {{--Role--}}
                             <div class="form-group col-md-12 col-md-offset-2">

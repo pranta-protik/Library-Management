@@ -35,3 +35,11 @@ Route::get('home', 'HomeController@index')->name('home');
 //Profile Routes
 Route::get('profile','ProfileController@index')->name('profile');
 Route::put('profile/{user_id}','ProfileController@update');
+
+//Approve Routes
+Route::get('approve','ApproveController@index')->name('approve');
+Route::put('approve/{user_id}','ApproveController@update');
+Route::delete('approve/{user_id}','ApproveController@delete');
+
+//Dashboard Routes
+Route::get('dashboard','DashboardController@index')->name('dashboard');
