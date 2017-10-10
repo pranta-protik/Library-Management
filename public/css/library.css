@@ -4,9 +4,6 @@
     box-shadow: 0 6px 6px rgba(0,0,0,0.15);
     font-size: 16px;
 }
-.container{
-    padding: 10px;
-}
 
 .dropbtna {
     color: white;
@@ -123,4 +120,20 @@ img.avatar {
 
 .containerProfile:hover .middleProfile {
     opacity: 1;
+}
+
+.myContainer{
+    padding-top: 13vh !important;
+    min-height: 93vh !important;
+}
+
+.myPanel{
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    border-color: rgba(0,102,106,0.66);
+}
+
+.myHeading{
+    text-align: center;
+    margin-bottom: 0vh;
+    font-size: large;
 }

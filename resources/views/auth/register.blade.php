@@ -5,14 +5,13 @@
     @endsection
 
 @section('body')
-<div class="container" style="margin-top: 30px">
+<div class="container myContainer">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading text-center" style="font-size: large"><img src="img/register.png" alt="Register" class="avatar" style="height: 30px;width: 30px">
+            <div class="panel panel-default myPanel">
+                <div class="panel-heading myHeading" ><img src="img/register.png" alt="Register" class="avatar" style="height: 30px;width: 30px">
                 <strong>Register</strong>
                 </div>
-
                 <div class="panel-body" >
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
