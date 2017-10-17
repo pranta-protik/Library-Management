@@ -5,8 +5,10 @@
     @endsection
 
 @section('body')
+    <div class="container myContainer">
     <p class="text-center" style="margin-top: 200px;font-size: 60px;color: darkslateblue">Under Construction</p>
     <p class="text-center" id="demo" style="margin-bottom: 200px;font-size: 40px;color: darkslateblue"></p>
+    </div>
     @endsection
 
 @section('script')

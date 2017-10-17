@@ -43,3 +43,10 @@ Route::delete('approve/{user_id}','ApproveController@delete');
 
 //Dashboard Routes
 Route::get('dashboard','DashboardController@index')->name('dashboard');
+
+//New Book Routes
+Route::get('newInfo','NewInfoController@index')->name('newInfo');
+Route::get('createInfo','NewInfoController@createInfo');
+Route::get('newBook','NewBookController@index')->name('newBook');
+Route::get('addAuthorDDL','NewBookController@authorDDL');
+Route::post('newBook','NewBookController@create');

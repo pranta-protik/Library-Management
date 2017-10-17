@@ -5,7 +5,7 @@
     @endsection
 
 @section('body')
-
+<div class="myContainer" style="margin-top: -5vh">
     <div class="main-wrapper"  >
         <div class="carousel slide"  data-ride="carousel" id="main-carousel" >
             <!-- Indicators -->
@@ -43,28 +43,28 @@
         <div class="container">
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/browse.jpg" alt="Avatar" style="width:100%">
+                    <img src="img/browse.jpg" alt="Avatar" class="card-img">
                     <h4 class="text-center"><b>Browse Books</b></h4>
                     <br>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/borrow.jpg" alt="Borrow" style="width:100%">
+                    <img src="img/borrow.jpg" alt="Borrow" class="card-img">
                     <h4 class="text-center"><b>Borrow Books</b></h4>
                     <br>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/envelop.jpg" alt="Envelop" style="width:100%">
+                    <img src="img/envelop.jpg" alt="Envelop" class="card-img">
                     <h4 class="text-center"><b>Contact Us</b></h4>
                     <br>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/address.jpg" alt="Address" style="width:100%">
+                    <img src="img/address.jpg" alt="Address" class="card-img">
                     <h4 class="text-center"><b>Addresses</b></h4>
                     <br>
                 </div>
@@ -73,5 +73,5 @@
         </div>
         <br>
     </div>
-
+</div>
 @endsection

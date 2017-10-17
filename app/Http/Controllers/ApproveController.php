@@ -26,7 +26,7 @@ class ApproveController extends Controller
         return redirect('/approve');
     }
 
-    public function delete(Request $request,$id){
+    public function delete($id){
         $user=User::findOrFail($id);
         $user->delete();
         return redirect('/approve');

@@ -9,6 +9,10 @@ class Book extends Model
     public $timestamps=false;
 
     protected $fillable=[
-        'bookName', 'category_id', 'publication_id', 'type_id', 'like', 'isIssued',
+        'bookName', 'category_id', 'publication_id', 'type_id', 'like', 'isIssued','bookImage','edition','published_at',
     ];
+
+    public function authors(){
+        return $this->belongsToMany('App\Author');
+    }
 }

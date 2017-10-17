@@ -22,7 +22,9 @@ class CreateBooksTable extends Migration
             $table->foreign('publication_id')->references('id')->on('publications')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('type_id')->unsigned()->index();
             $table->foreign('type_id')->references('id')->on('types')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('like');
+            $table->string('edition');
+            $table->date('published_at');
+            $table->integer('rating')->default(0);
             $table->boolean('isIssued')->default(false);
         });
     }

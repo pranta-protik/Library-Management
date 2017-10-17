@@ -8,8 +8,8 @@
 <div class="container myContainer">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default myPanel">
-                <div class="panel-heading myHeading" ><img src="img/register.png" alt="Register" class="avatar" style="height: 30px;width: 30px">
+            <div class="panel myPanel">
+                <div class="panel-heading myHeading"><img src="img/register.png" alt="Register" class="avatar myImg">
                 <strong>Register</strong>
                 </div>
                 <div class="panel-body" >
@@ -200,7 +200,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-6">
-                                <button type="submit" class="btn btn-primary" onclick="return confirm('sure to register !!')">
+                                <button type="submit" class="btn btn-primary" id="btnSubmit" name="btnSubmit">
                                     Register
                                 </button>
                             </div>

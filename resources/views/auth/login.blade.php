@@ -5,15 +5,15 @@
     @endsection
 
 @section('body')
-<div class="container" style="margin-bottom: 20px;margin-top: 30px">
+<div class="container myContainer">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel myPanel">
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="imgcontainer" style="margin-bottom: 27px">
+                        <div class="imgcontainer" style="margin-bottom: 4vh">
                             <img src="img/avater2.png" alt="Avatar" class="avatar">
                         </div>
 

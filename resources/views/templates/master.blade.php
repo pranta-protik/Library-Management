@@ -20,7 +20,9 @@
 <!-- Navigation -->
 @include('templates.navbar')
 
+<div style="background-color:whitesmoke">
 @yield('body')
+</div>
 
 @include('templates.footer')
 

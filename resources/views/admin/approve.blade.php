@@ -5,10 +5,12 @@
 @endsection
 
 @section('body')
-    <h3 class="text-center"><b>Approve Members</b></h3>
-    <div class="container">
+    <div class="container myContainer">
+        <h3 class="text-center"><b>Approve Members</b></h3>
+        <hr>
+        <div class="panel panel-table">
         <table class="table table-bordered table-striped table-responsive">
-            <tr>
+            <tr class="table-header">
                 <th>Name</th>
                 <th>Username</th>
                 <th>E-Mail</th>
@@ -16,11 +18,11 @@
                 <th>Gender</th>
                 <th>Address</th>
                 <th>Contact</th>
-                <th class="text-success text-center">Approve</th>
-                <th class="text-danger text-center">Reject</th>
+                <th><img src="img/approve.png" alt="Approve" class="nav-img"></th>
+                <th><img src="img/reject.png" alt="Reject" class="nav-img"></th>
             </tr>
             @foreach($users as $user)
-                <tr>
+                <tr class="table-cell">
                     <td>{{$user->firstName}} {{$user->lastName}}</td>
                     <td>{{$user->username}}</td>
                     <td>{{$user->email}}</td>
@@ -32,19 +34,20 @@
                         {{ method_field('PUT') }}
                         {{ csrf_field() }}
                     <td class="text-center">
-                        <button type="submit" class="btn-link" name="approve" id="approve" style="color: darkgreen" onclick="return confirm('sure to approve !!')">Approve</button>
+                        <button type="submit" class="btn-link span-success" name="approve" id="approve" onclick="return confirm('sure to approve !!')">Approve</button>
                     </td>
                     </form>
                     <form action="/approve/{{$user->id}}" method="post">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                     <td class="text-center">
-                        <button type="submit" class="btn-link" name="reject" id="reject" style="color: darkred" onclick="return confirm('sure to reject !!')">Reject</button>
+                        <button type="submit" class="btn-link span-danger" name="reject" id="reject" onclick="return confirm('sure to reject !!')">Reject</button>
                     </td>
                     </form>
                 </tr>
                 @endforeach
 
         </table>
+        </div>
     </div>
 @endsection

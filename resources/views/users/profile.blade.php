@@ -6,17 +6,15 @@
 
 @section('body')
 
-    <div class="container" style="margin-top: 30px">
+    <div class="container myContainer">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-body text-center" style="color: darkgreen">
-                        <form action="/profile/{{ auth()->user()->id }}" method="post">
-
+                <div class="panel myPanel">
+                    <div class="panel-body text-center">
+                        <form action="/profile/{{ auth()->user()->id }}" method="post" enctype="multipart/form-data">
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
 
-                            <!-- Modal -->
                             <div class="modal fade" id="myModal" role="dialog">
                                 <div class="modal-dialog">
                                     <!-- Modal content-->
@@ -26,22 +24,31 @@
                                             <h4 class="modal-title">Upload Image</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <input type="file" name="image" id="image">
+                                            <input type="file" name="image" id="image" onchange="previewImage(this);">
                                             <br>
-                                            <input type="submit" name="upload" id="upload" value="Upload" class="btn btn-default">
+                                            <div id="divPreview" style="display: none">
+                                                <img src="#" class="img-circle" id="preview">
+                                                <br>
+                                                <br>
+                                            </div>
+                                            <input type="submit" name="upload" id="upload" value="Upload" class="btn btn-primary">
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="cancelUpload();">Close</button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
 
                             <div class="containerProfile col-md-offset-3">
-                                <a data-toggle="modal" data-target="#myModal" href="#"><img class="profile-img" src="img/profile.jpg" alt="Profile"></a>
+                                <a data-toggle="modal" data-target="#myModal" href="#"><img class="profile-img" src="@if(!empty(auth()->user()->image))
+                                    {{ auth()->user()->image }}
+                                            @else
+                                            {{ 'img/profile.png' }}
+                                            @endif
+                                            " alt="Profile"></a>
                                 <div class="middleProfile">
-                                    <a data-toggle="modal" data-target="#myModal" href="#" style="text-decoration: none;color: white">Change</a>
+                                    <a data-toggle="modal" data-target="#myModal" href="#" class="footer-ref">Change</a>
                                 </div>
                             </div>
 
@@ -55,7 +62,7 @@
                             <div id="divNamelbl">
                                 <h1>{{ auth()->user()->firstName.' '.auth()->user()->lastName }}</h1>
                             </div>
-                            <div id="divName" style="margin-bottom: 50px" hidden>
+                            <div id="divName" style="margin-bottom: 7vh" hidden>
                                 <br>
                                 <div class="col-md-3 col-md-offset-3">
                                     <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First" value="{{ auth()->user()->firstName }}" required>
@@ -223,6 +230,26 @@
 
             //Update
             $('#divUpdate').show();
+        }
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#divPreview').css('display','block');
+                    $('#preview')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(150);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function cancelUpload() {
+            $('#image').val(null);
+            $('#divPreview').css('display','none');
         }
     </script>
     @endsection
