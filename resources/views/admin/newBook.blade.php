@@ -76,7 +76,7 @@
 
                     {{--Category--}}
                     <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-                        <label for="category" class="col-md-4 control-label">Category :</label>
+                        <label for="category" class="col-md-4 control-label">Genre :</label>
 
                         <div class="col-md-6">
                             <select name="category" id="category" class="form-control" required>
@@ -178,23 +178,6 @@
                             @endif
                         </div>
                     </div>
-
-                    {{--Book Image--}}
-                    {{--<div class="form-group{{ $errors->has('bookImage') ? ' has-error' : '' }}">--}}
-                        {{--<label for="bookImage" class="col-md-4 control-label">Book Cover :</label>--}}
-
-                        {{--<div class="col-md-6">--}}
-                            {{--<input type="file" name="bookImage" id="bookImage" onchange="previewImage(this);" required>--}}
-                            {{--@if ($errors->has('bookImage'))--}}
-                                {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('bookImage') }}</strong>--}}
-                                    {{--</span>--}}
-                            {{--@endif--}}
-                            {{--<div id="divPreview" style="display: none">--}}
-                                {{--<img src="#" class="img-circle" id="preview">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-6">
