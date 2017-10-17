@@ -6,6 +6,7 @@ use App\Author;
 use App\Book;
 use App\Category;
 use App\Copy;
+use App\Language;
 use App\Publication;
 use App\Type;
 use Illuminate\Http\Request;
@@ -19,9 +20,10 @@ class NewBookController extends Controller
 
     public function index(){
         $categories=Category::all();
+        $languages=Language::all();
         $publications=Publication::all();
         $types=Type::all();
-        return view('admin.newBook',compact('categories','publications','types'));
+        return view('admin.newBook',compact('categories','languages','publications','types'));
     }
 
     public function authorDDL(){
@@ -85,6 +87,10 @@ class NewBookController extends Controller
             ]);
 
             $book = Book::orderBy('id', 'desc')->first();
+
+            $lan=Language::find($request->language);
+            $book->languages()->save($lan);
+
             Copy::create([
                 'book_id' => $book->id,
                 'copy' => $request->nob,

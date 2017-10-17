@@ -11,4 +11,8 @@ class Language extends Model
     protected $fillable=[
         'languageName',
     ];
+
+    public function books(){
+        return $this->belongsToMany('App\Book');
+    }
 }

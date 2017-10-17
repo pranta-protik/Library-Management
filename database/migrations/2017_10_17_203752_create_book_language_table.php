@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLanguageBookTable extends Migration
+class CreateBookLanguageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLanguageBookTable extends Migration
      */
     public function up()
     {
-        Schema::create('language_book', function (Blueprint $table) {
+        Schema::create('book_language', function (Blueprint $table) {
             $table->integer('book_id')->unsigned()->index();
             $table->foreign('book_id')->references('id')->on('books')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('language_id')->unsigned()->index();
@@ -28,6 +28,6 @@ class CreateLanguageBookTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('language_book');
+        Schema::dropIfExists('book_language');
     }
 }

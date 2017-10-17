@@ -94,6 +94,26 @@
                         </div>
                     </div>
 
+                    {{--Language--}}
+                    <div class="form-group{{ $errors->has('language') ? ' has-error' : '' }}">
+                        <label for="language" class="col-md-4 control-label">Language :</label>
+
+                        <div class="col-md-6">
+                            <select name="language" id="language" class="form-control" required>
+                                <option value="" selected="selected" disabled>Select Language</option>
+                                @foreach($languages as $language)
+                                    <option value="{{ $language->id }}" @if (old('language')==$language->id ) selected="selected" @endif>{{ $language->languageName }}</option>
+                                @endforeach
+                            </select>
+
+                            @if ($errors->has('language'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('language') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+
                     {{--Publication--}}
                     <div class="form-group{{ $errors->has('publication') ? ' has-error' : '' }}">
                         <label for="publication" class="col-md-4 control-label">Publication :</label>
