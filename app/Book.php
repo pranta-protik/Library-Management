@@ -9,14 +9,18 @@ class Book extends Model
     public $timestamps=false;
 
     protected $fillable=[
-        'bookName', 'category_id', 'publication_id', 'type_id', 'like', 'isIssued','bookImage','edition','published_at',
+        'serialNo','bookName', 'language_id', 'category_id', 'publication_id', 'type_id','bookImage','edition','published_at',
+    ];
+
+    protected $dates=[
+        'published_at',
     ];
 
     public function authors(){
         return $this->belongsToMany('App\Author');
     }
 
-    public function languages(){
-        return $this->belongsToMany('App\Language');
+    public function getAuthorsPerBook($id) {
+        return Book::find($id)->authors;
     }
 }

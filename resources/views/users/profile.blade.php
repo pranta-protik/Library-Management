@@ -42,9 +42,9 @@
 
                             <div class="containerProfile col-md-offset-3">
                                 <a data-toggle="modal" data-target="#myModal" href="#"><img class="profile-img" src="@if(!empty(auth()->user()->image))
-                                    {{ auth()->user()->image }}
+                                    {{ asset(auth()->user()->image) }}
                                             @else
-                                            {{ 'img/profile.png' }}
+                                            {{ asset('img/profile.png') }}
                                             @endif
                                             " alt="Profile"></a>
                                 <div class="middleProfile">
@@ -59,6 +59,7 @@
                                 </div>
                             </div>
 
+                            {{--Name--}}
                             <div id="divNamelbl">
                                 <h1>{{ auth()->user()->firstName.' '.auth()->user()->lastName }}</h1>
                             </div>

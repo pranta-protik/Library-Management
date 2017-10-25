@@ -18,7 +18,7 @@
                     @if(auth()->user()&&(auth()->user()->role)=="Librarian")
                     <li>
                         <a href="{{route('dashboard')}}">
-                            <img src="img/adminPanel.png" alt="Profile" class="img-rounded nav-img">
+                            <img src="{{ asset('img/adminPanel.png') }}" alt="Profile" class="img-rounded nav-img">
                         </a>
                     </li>
                     @endif
@@ -41,9 +41,9 @@
                     <li class="dropdowna">
                         <a class="dropbtna" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                             <img src="@if(!empty(auth()->user()->image))
-                            {{ auth()->user()->image }}
+                            {{ asset(auth()->user()->image) }}
                             @else
-                            {{ 'img/profile.png' }}
+                            {{ asset('img/profile.png')}}
                             @endif
                             " alt="Profile" class="img-rounded nav-img">
                             <span class="caret"></span>

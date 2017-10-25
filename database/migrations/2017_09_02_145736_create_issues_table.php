@@ -21,7 +21,7 @@ class CreateIssuesTable extends Migration
             $table->foreign('book_id')->references('id')->on('books')->onUpdate('cascade')->onDelete('cascade');
             $table->date('issueDate');
             $table->date('returnDate');
-            $table->boolean('hasReturned')->default(false);
+            $table->boolean('isIssued')->default(false);
         });
     }
 

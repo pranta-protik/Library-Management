@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel myPanel">
-                <div class="panel-heading myHeading"><img src="../img/reset.png" alt="Avatar" class="avatar myImg">
+                <div class="panel-heading myHeading"><img src="{{ asset('/img/reset.png') }}" alt="Avatar" class="avatar myImg">
                     <strong>Reset Password</strong>
                 </div>
 

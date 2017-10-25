@@ -50,3 +50,20 @@ Route::get('createInfo','NewInfoController@createInfo');
 Route::get('newBook','NewBookController@index')->name('newBook');
 Route::get('addAuthorDDL','NewBookController@authorDDL');
 Route::post('newBook','NewBookController@create');
+
+//Browse Book Routes
+Route::get('browse','BrowseBookController@index')->name('browse');
+
+//View Book Routes
+Route::get('book/{book_id}','BookController@index');
+Route::post('book/{book_id}','BookController@borrow');
+Route::put('book/{book_id}','BookController@update');
+Route::delete('book/{book_id}','BookController@delete');
+
+//Issue Book
+Route::get('issue','IssueController@index')->name('issue');
+Route::put('issue/{issue_id}','IssueController@update');
+Route::delete('issue/{issue_id}','IssueController@delete');
+
+//Borrow Book
+Route::get('borrow','BorrowController@index')->name('borrow');

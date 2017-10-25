@@ -18,8 +18,8 @@
                 <th>Gender</th>
                 <th>Address</th>
                 <th>Contact</th>
-                <th><img src="img/approve.png" alt="Approve" class="nav-img"></th>
-                <th><img src="img/reject.png" alt="Reject" class="nav-img"></th>
+                <th><img src="{{ asset('img/approve.png') }}" alt="Approve" class="nav-img"></th>
+                <th><img src="{{ asset('img/reject.png') }}" alt="Reject" class="nav-img"></th>
             </tr>
             @foreach($users as $user)
                 <tr class="table-cell">

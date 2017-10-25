@@ -8,11 +8,11 @@
     <div class="container myContainer">
         <div class="row">
             <div class="tab">
-                <button id="defaultOpen" class="tablinks" onclick="openCity(event, 'Authors')">Add authors</button>
-                <button class="tablinks" onclick="openCity(event, 'Languages')">Add language</button>
-                <button class="tablinks" onclick="openCity(event, 'Categories')">Add category</button>
-                <button class="tablinks" onclick="openCity(event, 'Publications')">Add publication</button>
-                <button class="tablinks" onclick="openCity(event, 'Types')">Add type</button>
+                <button id="defaultOpen" class="tablinks" onclick="openTab(event, 'Authors')">Add authors</button>
+                <button class="tablinks" onclick="openTab(event, 'Languages')">Add language</button>
+                <button class="tablinks" onclick="openTab(event, 'Categories')">Add category</button>
+                <button class="tablinks" onclick="openTab(event, 'Publications')">Add publication</button>
+                <button class="tablinks" onclick="openTab(event, 'Types')">Add type</button>
                 <div class="col-md-1 col-md-offset-4">
                 <a href="{{ route('newBook') }}" class="btn btn-default tab-btn">Add Books</a>
                 </div>
@@ -22,7 +22,7 @@
             <div id="Authors" class="tabcontent myPanel col-md-12">
                 <div class="col-md-8 col-md-offset-2 tab-panel">
                     <div class="panel myPanel">
-                        <div class="panel-heading myHeading"><img src="img/addAuthor.png" alt="Register" class="avatar myImg">
+                        <div class="panel-heading myHeading"><img src="{{ asset('img/addAuthor.png') }}" alt="Register" class="avatar myImg">
                             <strong>Add authors</strong>
                         </div>
                         <div class="panel-body" >
@@ -56,7 +56,7 @@
             <div id="Languages" class="tabcontent myPanel col-md-12">
                 <div class="col-md-8 col-md-offset-2 tab-panel">
                     <div class="panel myPanel">
-                        <div class="panel-heading myHeading"><img src="img/addLanguage.png" alt="Register" class="avatar myImg">
+                        <div class="panel-heading myHeading"><img src="{{ asset('img/addLanguage.png') }}" alt="Register" class="avatar myImg">
                             <strong>Add language</strong>
                         </div>
                         <div class="panel-body" >
@@ -90,7 +90,7 @@
             <div id="Categories" class="tabcontent myPanel col-md-12">
                 <div class="col-md-8 col-md-offset-2 tab-panel">
                     <div class="panel myPanel">
-                        <div class="panel-heading myHeading"><img src="img/addCategory.png" alt="Register" class="avatar myImg">
+                        <div class="panel-heading myHeading"><img src="{{ asset('img/addCategory.png') }}" alt="Register" class="avatar myImg">
                             <strong>Add category</strong>
                         </div>
                         <div class="panel-body" >
@@ -124,7 +124,7 @@
             <div id="Publications" class="tabcontent myPanel col-md-12">
                 <div class="col-md-8 col-md-offset-2 tab-panel">
                     <div class="panel myPanel">
-                        <div class="panel-heading myHeading"><img src="img/addPublication.png" alt="Register" class="avatar myImg">
+                        <div class="panel-heading myHeading"><img src="{{ asset('img/addPublication.png') }}" alt="Register" class="avatar myImg">
                             <strong>Add publication</strong>
                         </div>
                         <div class="panel-body" >
@@ -158,7 +158,7 @@
             <div id="Types" class="tabcontent myPanel col-md-12">
                 <div class="col-md-8 col-md-offset-2 tab-panel">
                     <div class="panel myPanel">
-                        <div class="panel-heading myHeading"><img src="img/addType.png" alt="Register" class="avatar myImg">
+                        <div class="panel-heading myHeading"><img src="{{ asset('img/addType.png') }}" alt="Register" class="avatar myImg">
                             <strong>Add type</strong>
                         </div>
                         <div class="panel-body" >
@@ -196,7 +196,7 @@
     <script>
 
         //Tab Selection
-        function openCity(evt, cityName) {
+        function openTab(evt, cityName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {

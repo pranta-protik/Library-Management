@@ -75,22 +75,19 @@ class NewBookController extends Controller
             $image->move($destinationPath, $name);
 
             Book::create([
+                'serialNo'=>$request->serialNo,
                 'bookImage' => $destinationPath . '/' . $name,
                 'bookName' => $request->bookName,
+                'language_id'=>$request->language,
                 'category_id' => $request->category,
                 'publication_id' => $request->publication,
                 'type_id' => $request->type,
                 'edition' => $request->edition,
                 'published_at' => $request->dop,
                 'rating' => 0,
-                'isIssued' => false,
             ]);
 
             $book = Book::orderBy('id', 'desc')->first();
-
-            $lan=Language::find($request->language);
-            $book->languages()->save($lan);
-
             Copy::create([
                 'book_id' => $book->id,
                 'copy' => $request->nob,

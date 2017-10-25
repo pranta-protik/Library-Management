@@ -2,7 +2,7 @@
 
 @section('title')
     Home
-    @endsection
+@endsection
 
 @section('body')
 <div class="myContainer" style="margin-top: -5vh">
@@ -20,16 +20,16 @@
             <!-- Slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="img/slide3.jpg" />
+                    <img src="{{ asset('img/slide3.jpg') }}" />
                 </div>
                 <div class="item">
-                    <img src="img/slide5.jpg" />
+                    <img src="{{ asset('img/slide5.jpg') }}" />
                 </div>
                 <div class="item">
-                    <img src="img/slide6.jpg" />
+                    <img src="{{ asset('img/slide6.jpg') }}" />
                 </div>
                 <div class="item">
-                    <img src="img/slide7.jpg" />
+                    <img src="{{ asset('img/slide7.jpg') }}" />
                 </div>
             </div>
 
@@ -43,29 +43,37 @@
         <div class="container">
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/browse.jpg" alt="Avatar" class="card-img">
-                    <h4 class="text-center"><b>Browse Books</b></h4>
+                    <a href="{{ route('browse') }}" class="card-a">
+                        <img src="{{ asset('img/browse.jpg') }}" alt="Avatar" class="card-img">
+                        <h4 class="text-center"><b>Browse Books</b></h4>
+                    </a>
                     <br>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/borrow.jpg" alt="Borrow" class="card-img">
-                    <h4 class="text-center"><b>Borrow Books</b></h4>
+                    <a href="{{ route('borrow') }}" class="card-a">
+                        <img src="{{ asset('img/borrow.jpg') }}" alt="Borrow" class="card-img">
+                        <h4 class="text-center"><b>Borrowed Books</b></h4>
+                    </a>
                     <br>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/envelop.jpg" alt="Envelop" class="card-img">
-                    <h4 class="text-center"><b>Contact Us</b></h4>
+                    <a href="#" class="card-a">
+                        <img src="{{ asset('img/envelop.jpg') }}" alt="Envelop" class="card-img">
+                        <h4 class="text-center"><b>Contact Us</b></h4>
+                    </a>
                     <br>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <img src="img/address.jpg" alt="Address" class="card-img">
-                    <h4 class="text-center"><b>Addresses</b></h4>
+                    <a href="#" class="card-a">
+                        <img src="{{ asset('img/address.jpg') }}" alt="Address" class="card-img">
+                        <h4 class="text-center"><b>Addresses</b></h4>
+                    </a>
                     <br>
                 </div>
             </div>

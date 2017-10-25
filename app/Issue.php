@@ -9,7 +9,7 @@ class Issue extends Model
     public $timestamps=false;
 
     protected $fillable=[
-        'user_id', 'book_id', 'issueDate', 'returnDate', 'hasReturned',
+        'user_id', 'book_id', 'issueDate', 'returnDate', 'isIssued',
     ];
 
     protected $dates=[

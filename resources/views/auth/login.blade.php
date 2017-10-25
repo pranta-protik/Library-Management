@@ -14,7 +14,7 @@
                         {{ csrf_field() }}
 
                         <div class="imgcontainer" style="margin-bottom: 4vh">
-                            <img src="img/avater2.png" alt="Avatar" class="avatar">
+                            <img src="{{ 'img/avater2.png' }}" alt="Avatar" class="avatar">
                         </div>
 
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">

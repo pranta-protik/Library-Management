@@ -16,6 +16,8 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('bookName');
+            $table->integer('language_id')->unsigned()->index();
+            $table->foreign('language_id')->references('id')->on('languages')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('category_id')->unsigned()->index();
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('publication_id')->unsigned()->index();
@@ -24,8 +26,6 @@ class CreateBooksTable extends Migration
             $table->foreign('type_id')->references('id')->on('types')->onUpdate('cascade')->onDelete('cascade');
             $table->string('edition');
             $table->date('published_at');
-            $table->integer('rating')->default(0);
-            $table->boolean('isIssued')->default(false);
         });
     }
 

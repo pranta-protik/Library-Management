@@ -102,8 +102,8 @@ img.avatar {
 .book-card{
     border: 1px solid #fff !important;
     height: 25vh !important;
-    width: 25vh !important;
-    margin-left: 5vh !important;
+    width: 30vh !important;
+    margin-left: 1vh !important;
 }
 
 .containerProfile {
@@ -269,4 +269,22 @@ div.tab button.active {
 
 .tab-panel{
     margin-top: 2vh;
+}
+
+.card-a{
+    text-decoration: none !important;
+    color: black;
+}
+
+.browse-card{
+    height: 30vh !important;
+    width: 35vh !important;
+}
+
+.book-cover{
+    border: 1px solid #fff !important;
+    height: 25vh !important;
+    width: 30vh !important;
+    margin-left: 1vh !important;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
 }

@@ -8,7 +8,7 @@
     <div class="container myContainer">
         <div class="col-md-8 col-md-offset-2">
         <div class="panel myPanel">
-            <div class="panel-heading myHeading"><img src="img/newBook.png" alt="Register" class="avatar myImg">
+            <div class="panel-heading myHeading"><img src="{{ asset('img/newBook.png') }}" alt="Register" class="avatar myImg">
                 <strong>Add new books</strong>
             </div>
             <div class="panel-body" >
@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <div class="col-md-4 col-md-offset-4">
                             <div class="card book-card">
-                                <img id="preview" src="img/addBook.jpg" alt="Book" class="card-img"></a>
+                                <img id="preview" src="{{ asset('img/addBook.jpg') }}" alt="Book" class="card-img"></a>
                             </div>
                         </div>
                     </div>
@@ -36,6 +36,21 @@
                             @if ($errors->has('bookImage'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('bookImage') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    {{--Serial No--}}
+                    <div class="form-group{{ $errors->has('serialNo') ? ' has-error' : '' }}">
+                        <label for="serialNo" class="col-md-4 control-label">Serial No :</label>
+
+                        <div class="col-md-6">
+                            <input id="serialNo" type="text" class="form-control" name="serialNo" autofocus="autofocus" value="{{ old('serialNo') }}" required>
+
+                            @if ($errors->has('serialNo'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('serialNo') }}</strong>
                                     </span>
                             @endif
                         </div>
