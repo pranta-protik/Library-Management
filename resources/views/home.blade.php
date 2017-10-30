@@ -50,6 +50,7 @@
                     <br>
                 </div>
             </div>
+            @if(auth()->user()->role=="Member")
             <div class="col-md-3">
                 <div class="card">
                     <a href="{{ route('borrow') }}" class="card-a">
@@ -59,9 +60,10 @@
                     <br>
                 </div>
             </div>
+            @endif
             <div class="col-md-3">
                 <div class="card">
-                    <a href="#" class="card-a">
+                    <a href="{{ route('address') }}" class="card-a">
                         <img src="{{ asset('img/envelop.jpg') }}" alt="Envelop" class="card-img">
                         <h4 class="text-center"><b>Contact Us</b></h4>
                     </a>
@@ -70,15 +72,17 @@
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <a href="#" class="card-a">
+                    <a href="{{ route('about') }}" class="card-a">
                         <img src="{{ asset('img/address.jpg') }}" alt="Address" class="card-img">
-                        <h4 class="text-center"><b>Addresses</b></h4>
+                        <h4 class="text-center"><b>About Us</b></h4>
                     </a>
                     <br>
                 </div>
             </div>
 
         </div>
+        <br>
+        <br>
         <br>
     </div>
 </div>

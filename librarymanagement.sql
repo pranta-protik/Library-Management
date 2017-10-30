@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2017 at 10:18 PM
+-- Generation Time: Oct 30, 2017 at 04:13 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -85,7 +85,7 @@ CREATE TABLE `books` (
 
 INSERT INTO `books` (`id`, `serialNo`, `bookImage`, `bookName`, `language_id`, `category_id`, `publication_id`, `type_id`, `edition`, `published_at`) VALUES
 (3, '3', 'img/bookCover/1508787370.jpg', 'Red Drago', 2, 1, 1, 2, '3rd', '2017-10-05'),
-(4, '12', 'img/bookCover/1508787413.jpg', 'Red Dragon', 1, 2, 1, 1, '2nd', '2017-10-01');
+(4, '12', 'img/bookCover/1508787413.jpg', 'Red Dragon', 1, 2, 1, 1, '2nd', '2017-10-04');
 
 -- --------------------------------------------------------
 
@@ -148,20 +148,10 @@ CREATE TABLE `issues` (
 --
 
 INSERT INTO `issues` (`id`, `user_id`, `book_id`, `issueDate`, `returnDate`, `isIssued`) VALUES
-(24, 18, 4, '2017-10-24', NULL, 1),
-(25, 18, 4, NULL, NULL, 0),
-(27, 18, 4, NULL, NULL, 0),
-(28, 18, 4, NULL, NULL, 0),
-(29, 18, 4, NULL, NULL, 0),
-(30, 18, 4, NULL, NULL, 0),
-(31, 18, 4, NULL, NULL, 0),
 (32, 18, 4, NULL, NULL, 0),
 (33, 18, 4, NULL, NULL, 0),
-(34, 18, 4, NULL, NULL, 0),
-(35, 18, 4, NULL, NULL, 0),
-(36, 21, 3, NULL, NULL, 0),
-(37, 23, 4, NULL, NULL, 0),
-(38, 23, 3, '2017-10-25', NULL, 1);
+(36, 21, 3, '2017-10-30', NULL, 1),
+(37, 23, 4, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -180,7 +170,7 @@ CREATE TABLE `languages` (
 
 INSERT INTO `languages` (`id`, `languageName`) VALUES
 (1, 'English'),
-(2, 'Bengali');
+(2, 'Bangla');
 
 -- --------------------------------------------------------
 
@@ -201,9 +191,7 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `user_id`, `hasPaid`, `profession`, `institution`) VALUES
-(6, 18, 1, 'Student', 'Khulna University'),
-(7, 19, 1, 'Student', 'Khulna University'),
-(8, 20, 1, 'Student', 'Khulna University'),
+(6, 18, 0, 'Student', 'Khulna University'),
 (9, 21, 1, 'Student', 'KU'),
 (10, 23, 1, 'Student', 'Khulna University');
 
@@ -317,14 +305,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `image`, `username`, `firstName`, `lastName`, `email`, `password`, `dob`, `gender`, `address`, `contact`, `isApproved`, `remember_token`, `created_at`, `updated_at`) VALUES
-(10, 'Librarian', 'img/profile/pranta96.jpg', 'pranta96', 'Pranta', 'Protik', 'pranta.cse@gmail.com', '$2y$10$29o8HxhQkq47dnsX8v0LS.syvWXnYayX.FuTbexTf1WMtG6ctXllK', '1995-10-26', 'Male', 'Khulna', '0100000007', 1, 'tkGAeOg89nxpQuKH2XfNiezHnFca0pez84G7qvuMz5FcYoUQFo0BGQnkWFMk', '2017-09-04 04:27:25', '2017-10-16 00:36:22'),
+(10, 'Librarian', 'img/profile/pranta96.jpg', 'pranta96', 'Pranta', 'Protik', 'pranta.cse@gmail.com', '$2y$10$29o8HxhQkq47dnsX8v0LS.syvWXnYayX.FuTbexTf1WMtG6ctXllK', '1995-10-26', 'Male', 'Khulna', '0100000007', 1, 'NSexDbPVHUjy8tkDklaIIWGaFDswD9Wg9CwGDUVSEoDQT0Hqd9zBNwQbkri6', '2017-09-04 04:27:25', '2017-10-16 00:36:22'),
 (16, 'Librarian', 'img/profile/pranta95.jpg', 'pranta95', 'Pra', 'Protik', 'pranta.cseku@gmail.com', '$2y$10$RgI1Kn1tZby/7brDMoAjZeSOXpxcdxP6u1JeTOz/O/7znhXvPFHtm', '1990-12-31', 'Male', 'Khulna', '213123', 1, 'hi4JCK1I2bRfOwCItMWbCurlVPGuTqnOS89RRdhZLnBvVSHutnPsBP1CTiUV', '2017-10-03 12:41:28', '2017-10-11 13:38:24'),
-(18, 'Member', 'img/profile/pranta97.jpg', 'pranta97', 'Pranta', 'Protik', 'pranta@gmail.com', '$2y$10$iioCnltPXo7d8Ljn7JbqbeQ4VDuh/tdSUs1DJa4qIDDSW8Rz14hgi', '2002-12-31', 'Male', 'Khulna', '012155645663', 1, 'SRV4uegOX29aRJGLmSsnvhWBqnSZ7dkPJniG2EWsaPiXSTKRNZgjqlaNVhqg', '2017-10-03 14:54:03', '2017-10-11 10:32:08'),
-(19, 'Member', 'img/profile/pranta.jpg', 'pranta', 'Pranta', 'Protik', 'nlowe@gmail.com', '$2y$10$Lx2.BQFaQ/jFv81pS73UzOqMRGAKn3gVHsVdDlQlspqQZ5HWHgLYm', '1994-12-31', 'Male', 'Khuln', '012155645663', 1, 'FJxMO5tj68OLtmCuE6w5qg0rjISQd59ijqcljGc4xl1ecmy4QnjYzuMFh3i6', '2017-10-03 23:28:04', '2017-10-11 13:39:14'),
-(20, 'Member', NULL, 'pranta99', 'Pranta', 'Protik', 'pranta99@gmail.com', '$2y$10$M7VEdVTGUgYMK7Gd2ETolOSc30mf9AH4KQAhTymxb9OycWehdB9hm', '2002-12-31', 'Male', 'Khulna', '012155645663', 0, NULL, '2017-10-10 08:35:55', '2017-10-10 08:35:55'),
+(18, 'Member', 'img/profile/pranta97.jpg', 'pranta97', 'Pranta', 'Protik', 'pranta@gmail.com', '$2y$10$iioCnltPXo7d8Ljn7JbqbeQ4VDuh/tdSUs1DJa4qIDDSW8Rz14hgi', '2002-12-31', 'Male', 'Khulna', '012155645663', 0, '0fgo1t90LNz1AJz8pcOr7h0PvFhYLs1kqxVWqc37N12aDEQsBtI5OYFqdPCY', '2017-10-03 14:54:03', '2017-10-30 07:13:35'),
 (21, 'Member', NULL, 'nsakeef', 'Nazmus', 'Sakeef', 'nazmussakeef1700@gmail.com', '$2y$10$xdQzbQqtAKoLX95coUZY9OrqIxPeYeumc/JXx8r6.83UenLk493lK', '2017-10-04', 'Male', 'KUfsfsjoflksof', '01521439395', 1, 'F8K625uoFgFywkQdyeKwLImYoW9PSKfFvKwInrq5g7aDZENYFOr7SukEh8Ac', '2017-10-24 23:14:37', '2017-10-24 23:14:56'),
 (22, 'Librarian', 'img/profile/admin.jpg', 'admin', 'Admin', 'Admin', 'admin@admin.com', '$2y$10$D.rhgj4ZcjnwMmBRLtHj4eMxvSP9g82ahwCUAmXOEo8wQgvtxw9xC', '2017-10-04', 'Male', 'Khulna', '012155645663', 1, 'nofUCcEDMXO4kVmjQ2y46tLQvZJugNUYHUL18QM839KQT0EMccfONK3W4XOh', '2017-10-25 00:22:14', '2017-10-25 00:23:37'),
-(23, 'Member', NULL, 'member', 'Member', 'Member', 'member@member.com', '$2y$10$MvM4Wd2Tvs67FyKSqxkjouBnrFouVmvmIaMH9nWAl6d1MIl7V96He', '2017-10-05', 'Male', 'Khulna', '012155645663', 1, 'kufyWnPrilvCKWYnvzoOawCcxmdl5nonh77J80lEHnTaUEmCHF6CgHAE46VI', '2017-10-25 00:23:01', '2017-10-25 00:23:25');
+(23, 'Member', NULL, 'member', 'Member', 'Member', 'member@member.com', '$2y$10$MvM4Wd2Tvs67FyKSqxkjouBnrFouVmvmIaMH9nWAl6d1MIl7V96He', '2017-10-05', 'Male', 'Khulna', '012155645663', 1, 'EmzUgC4LfzPPLzTjU4RMoCnJsdfBNaxMdkDZLONzqE27dL7juVq0uDInnpl6', '2017-10-25 00:23:01', '2017-10-30 07:21:50');
 
 --
 -- Indexes for dumped tables

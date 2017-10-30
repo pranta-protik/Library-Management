@@ -45,7 +45,10 @@ class BookController extends Controller
         $available2=Issue::where('book_id',$book->id)->count();
         $available=$available1->copy-$available2;
 
-        return view('book',compact('book','authorList','authors','language','languages','category','categories','publication','publications','type','types','copy','available'));
+        //Eligible
+        $eligible=Issue::where('user_id',auth()->user()->id)->count();
+
+        return view('book',compact('book','authorList','authors','language','languages','category','categories','publication','publications','type','types','copy','available','eligible'));
     }
 
     public function update(Request $request,$id){
@@ -65,7 +68,7 @@ class BookController extends Controller
             $book->update(['bookImage'=>$destinationPath.'/'.$name]);
             return back();
         }
-
+        
         $book->update([
             'serialNo'=>$request->serialNo,
             'bookName'=>$request->bookName,

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Member;
-use App\User;
 use Illuminate\Http\Request;
+use App\User;
 
-class ApproveController extends Controller
+class DisapproveController extends Controller
 {
     public function __construct()
     {
@@ -14,26 +14,25 @@ class ApproveController extends Controller
     }
 
     public function index(){
-        $users=User::where('isApproved',0)->get();
-        return view('admin.approve',compact('users'));
+        $users=User::where('isApproved','=',1)->where('id','!=',auth()->user()->id)->get();
+        return view('admin.disapprove',compact('users'));
     }
 
     public function update($id){
-
         $user=User::findOrFail($id);
         $user->update([
-           'isApproved'=>1,
+            'isApproved'=>0,
         ]);
         $member=Member::where('user_id',$user->id);
         $member->update([
-            'hasPaid'=>1,
+            'hasPaid'=>0,
         ]);
-        return redirect('/approve');
+        return redirect('/disapprove');
     }
 
     public function delete($id){
         $user=User::findOrFail($id);
         $user->delete();
-        return redirect('/approve');
+        return redirect('/disapprove');
     }
 }

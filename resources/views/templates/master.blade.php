@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/library.css')}}">
     <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAegPFonCrfBDrVF8IGylUeHIgIrgHyQZw&callback=myMap"></script>
 </head>
 
 <body>

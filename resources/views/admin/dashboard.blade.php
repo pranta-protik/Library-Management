@@ -36,6 +36,13 @@
                 <br>
             </div>
         </div>
+        <div class="col-md-3" style="margin-bottom: 4vh">
+            <div class="card">
+                <br>
+                <h4 class="text-center text-muted"><b><a class="text-muted text-dashboard" href="{{route('disapprove')}}">Block Member</a></b></h4>
+                <br>
+            </div>
+        </div>
     </div>
     <br>
 @endsection

@@ -12,7 +12,7 @@
                     <tr class="table-header">
                         <th>Member Name</th>
                         <th>Book Name</th>
-                        <th>Serial No</th>
+
                         <th>Eligibility</th>
                         <th><img src="{{ asset('img/approve.png') }}" alt="Issue" class="nav-img"></th>
                         <th><img src="{{ asset('img/receive.png') }}" alt="Receive" class="nav-img"></th>
@@ -22,7 +22,7 @@
                         <tr class="table-cell">
                             <td>{{\App\User::find($issue->user_id)->firstName}} {{ \App\User::find($issue->user_id)->lastName }}</td>
                             <td>{{\App\Book::find($issue->book_id)->bookName}}</td>
-                            <td>{{ \App\Book::find($issue->book_id)->serialNo }}</td>
+
                             @if(\App\Member::where('user_id',$issue->user_id)->first()->hasPaid)
                                 <td class="text-success">
                                     {{ 'Eligible' }}
@@ -33,6 +33,7 @@
                                     {{ 'Not Eligible' }}
                                 </td>
                             @endif
+                            @if(\App\Member::where('user_id',$issue->user_id)->first()->hasPaid)
                             @if($issue->isIssued)
                                 <td class="text-center text-success">Issued</td>
                             @else
@@ -54,6 +55,10 @@
                             </form>
                                 @else
                                 <td class="text-center text-info">Receive</td>
+                            @endif
+                            @else
+                                <td class="text-center text-danger">----</td>
+                                <td class="text-center text-danger">----</td>
                             @endif
                             @if($issue->isIssued)
                                 <td class="text-center text-danger">Reject</td>

@@ -67,3 +67,14 @@ Route::delete('issue/{issue_id}','IssueController@delete');
 
 //Borrow Book
 Route::get('borrow','BorrowController@index')->name('borrow');
+
+//About
+Route::get('about','AboutController@index')->name('about');
+
+//Address
+Route::get('address','AddressController@index')->name('address');
+
+//Disapprove Routes
+Route::get('disapprove','ApproveController@index')->name('approve');
+Route::put('disapprove/{user_id}','ApproveController@update');
+Route::delete('disapprove/{user_id}','ApproveController@delete');
