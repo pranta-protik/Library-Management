@@ -12,11 +12,13 @@
             <table class="table table-bordered table-striped table-responsive">
                 <tr class="table-header">
                     <th>Book Name</th>
+                    <th>Borrow Date</th>
                     <th>Status</th>
                 </tr>
                 @foreach($issues as $issue)
                     <tr class="table-cell">
                         <td>{{\App\Book::find($issue->book_id)->bookName}}</td>
+                        <td>{{ $issue->issueDate }}</td>
                         @if($issue->isIssued)
                             <td class="text-success">
                                 {{ 'Accepted' }}

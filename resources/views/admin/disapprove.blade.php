@@ -18,7 +18,7 @@
                     <th>Gender</th>
                     <th>Address</th>
                     <th>Contact</th>
-                    <th><img src="{{ asset('img/reject.png') }}" alt="Disapprove" class="nav-img"></th>
+                    <th><img src="{{ asset('img/block.png') }}" alt="Disapprove" class="nav-img"></th>
                     <th><img src="{{ asset('img/reject.png') }}" alt="Delete" class="nav-img"></th>
                 </tr>
                 @foreach($users as $user)

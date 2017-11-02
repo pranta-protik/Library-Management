@@ -10,7 +10,7 @@
             <div class="col-md-10" style="margin-left: 2vh">
                 <input type="text" name="search" id="search" class="form-control" placeholder="Search...">
             </div>
-            <button name="btnSearch" id="btnSearch" class="btn btn-default" onclick="searchJS()">
+            <button name="btnSearch" id="btnSearch" class="btn btn-default" onclick="searchJS();">
                 <span class="glyphicon glyphicon-search"></span>
             </button>
         </div>

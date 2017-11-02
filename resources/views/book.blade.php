@@ -40,7 +40,11 @@
                                     </div>
                                 </div>
                             </div>
-
+                                @if(auth()->user()->role=="Librarian")
+                            <div class="col-md-offset-11">
+                                <button type="submit" class="btn btn-danger" name="delete" id="danger" onclick="deleteJS();">&#10006;</button>
+                            </div>
+                                @endif
                             <div class="containerProfile col-md-offset-3">
                                 <a data-toggle="modal" data-target="#myModal" href="#"><img class="book-cover" src="{{ asset($book->bookImage) }}" alt="Profile"></a>
                                 <div class="middleProfile">
@@ -193,10 +197,10 @@
                                 <label for="published_at" class="control-label col-md-3 text-right">Published At :</label>
                                 <div class="col-md-6 text-left">
                                     <div id="divPublish" hidden>
-                                        <input type="date" name="published_at" id="published_at" class="form-control" value="{{ $book->published_at }}" required>
+                                        <input type="date" name="published_at" id="published_at" class="form-control" value="{{ $book->published_at->format('Y-m-d') }}" required>
                                     </div>
                                     <div id="divPublishlbl">
-                                        <p>{{ $book->published_at }}</p>
+                                        <p>{{ $book->published_at->format('Y-m-d') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +230,7 @@
                                 </div>
                             </div>
                                 @else
-                                @if($available>0)
+                                @if($available>1&&\App\Type::find($book->type_id)->typeName=="Open")
                             <div class="form-group col-md-12">
                                 <hr>
                                 <button type="submit" class="btn btn-primary" name="borrow" id="borrow" onclick="borrowJS();">Borrow</button>
@@ -321,9 +325,15 @@
             $('#frm').submit();
         }
 
+        function deleteJS() {
+            $('#method_field').val("DELETE");
+            alert('book has been deleted');
+            $('#frm').submit();
+        }
         function borrowJS() {
             alert('request has been sent');
             $('#frm').submit();
         }
+
     </script>
 @endsection

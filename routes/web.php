@@ -75,6 +75,6 @@ Route::get('about','AboutController@index')->name('about');
 Route::get('address','AddressController@index')->name('address');
 
 //Disapprove Routes
-Route::get('disapprove','ApproveController@index')->name('approve');
-Route::put('disapprove/{user_id}','ApproveController@update');
-Route::delete('disapprove/{user_id}','ApproveController@delete');
+Route::get('disapprove','DisapproveController@index')->name('disapprove');
+Route::put('disapprove/{user_id}','DisapproveController@update');
+Route::delete('disapprove/{user_id}','DisapproveController@delete');

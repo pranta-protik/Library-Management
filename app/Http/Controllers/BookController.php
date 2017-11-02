@@ -97,8 +97,14 @@ class BookController extends Controller
     public function delete($id){
         if(isset($_POST['delAuthor'])){
             \DB::statement('delete from author_book where author_id='.$_POST['delAuthor']);
+            return back();
         }
-        return back();
+        $book=Book::findOrFail($id);
+        if (isset($_POST['delete'])){
+            $book->delete();
+            return redirect('\browse');
+        }
+
     }
 
     public function borrow($id){

@@ -19,8 +19,7 @@ class CreateIssuesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('book_id')->unsigned()->index();
             $table->foreign('book_id')->references('id')->on('books')->onUpdate('cascade')->onDelete('cascade');
-            $table->date('issueDate');
-            $table->date('returnDate');
+            $table->dateTime('issueDate');
             $table->boolean('isIssued')->default(false);
         });
     }

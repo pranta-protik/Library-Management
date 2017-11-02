@@ -12,8 +12,8 @@
                     <tr class="table-header">
                         <th>Member Name</th>
                         <th>Book Name</th>
-
                         <th>Eligibility</th>
+                        <th>Issue Date</th>
                         <th><img src="{{ asset('img/approve.png') }}" alt="Issue" class="nav-img"></th>
                         <th><img src="{{ asset('img/receive.png') }}" alt="Receive" class="nav-img"></th>
                         <th><img src="{{ asset('img/reject.png') }}" alt="Reject" class="nav-img"></th>
@@ -33,6 +33,7 @@
                                     {{ 'Not Eligible' }}
                                 </td>
                             @endif
+                            <td>{{ $issue->issueDate }}</td>
                             @if(\App\Member::where('user_id',$issue->user_id)->first()->hasPaid)
                             @if($issue->isIssued)
                                 <td class="text-center text-success">Issued</td>

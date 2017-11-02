@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2017 at 04:13 PM
+-- Generation Time: Nov 02, 2017 at 07:37 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -58,7 +58,8 @@ CREATE TABLE `author_book` (
 INSERT INTO `author_book` (`book_id`, `author_id`) VALUES
 (3, 1),
 (3, 2),
-(4, 1);
+(4, 1),
+(5, 1);
 
 -- --------------------------------------------------------
 
@@ -85,7 +86,8 @@ CREATE TABLE `books` (
 
 INSERT INTO `books` (`id`, `serialNo`, `bookImage`, `bookName`, `language_id`, `category_id`, `publication_id`, `type_id`, `edition`, `published_at`) VALUES
 (3, '3', 'img/bookCover/1508787370.jpg', 'Red Drago', 2, 1, 1, 2, '3rd', '2017-10-05'),
-(4, '12', 'img/bookCover/1508787413.jpg', 'Red Dragon', 1, 2, 1, 1, '2nd', '2017-10-04');
+(4, '12', 'img/bookCover/1508787413.jpg', 'Red Dragon', 1, 2, 1, 1, '2nd', '2017-10-04'),
+(5, '1', 'img/bookCover/1509633588.jpg', 'Red Drago', 1, 1, 1, 1, '1', '2017-12-31');
 
 -- --------------------------------------------------------
 
@@ -126,7 +128,8 @@ CREATE TABLE `copies` (
 
 INSERT INTO `copies` (`id`, `book_id`, `copy`) VALUES
 (6, 3, 34),
-(7, 4, 12);
+(7, 4, 12),
+(8, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -138,8 +141,7 @@ CREATE TABLE `issues` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `book_id` int(10) UNSIGNED NOT NULL,
-  `issueDate` date DEFAULT NULL,
-  `returnDate` date DEFAULT NULL,
+  `issueDate` datetime DEFAULT NULL,
   `isIssued` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -147,11 +149,10 @@ CREATE TABLE `issues` (
 -- Dumping data for table `issues`
 --
 
-INSERT INTO `issues` (`id`, `user_id`, `book_id`, `issueDate`, `returnDate`, `isIssued`) VALUES
-(32, 18, 4, NULL, NULL, 0),
-(33, 18, 4, NULL, NULL, 0),
-(36, 21, 3, '2017-10-30', NULL, 1),
-(37, 23, 4, NULL, NULL, 0);
+INSERT INTO `issues` (`id`, `user_id`, `book_id`, `issueDate`, `isIssued`) VALUES
+(33, 18, 4, '2017-11-02 13:06:40', 1),
+(38, 23, 3, NULL, 0),
+(39, 23, 3, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -191,8 +192,8 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `user_id`, `hasPaid`, `profession`, `institution`) VALUES
-(6, 18, 0, 'Student', 'Khulna University'),
-(9, 21, 1, 'Student', 'KU'),
+(6, 18, 1, 'Student', 'Khulna University'),
+(9, 21, 0, 'Student', 'KU'),
 (10, 23, 1, 'Student', 'Khulna University');
 
 -- --------------------------------------------------------
@@ -305,12 +306,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `image`, `username`, `firstName`, `lastName`, `email`, `password`, `dob`, `gender`, `address`, `contact`, `isApproved`, `remember_token`, `created_at`, `updated_at`) VALUES
-(10, 'Librarian', 'img/profile/pranta96.jpg', 'pranta96', 'Pranta', 'Protik', 'pranta.cse@gmail.com', '$2y$10$29o8HxhQkq47dnsX8v0LS.syvWXnYayX.FuTbexTf1WMtG6ctXllK', '1995-10-26', 'Male', 'Khulna', '0100000007', 1, 'NSexDbPVHUjy8tkDklaIIWGaFDswD9Wg9CwGDUVSEoDQT0Hqd9zBNwQbkri6', '2017-09-04 04:27:25', '2017-10-16 00:36:22'),
+(10, 'Librarian', 'img/profile/pranta96.jpg', 'pranta96', 'Pranta', 'Protik', 'pranta.cse@gmail.com', '$2y$10$29o8HxhQkq47dnsX8v0LS.syvWXnYayX.FuTbexTf1WMtG6ctXllK', '1995-10-26', 'Male', 'Khulna', '0100000007', 1, 'vqTP87vpxj796VsDSnTfmW0MruUMnom3Gk4PkORwioyU5ZcCn9UjCOMqybQQ', '2017-09-04 04:27:25', '2017-10-16 00:36:22'),
 (16, 'Librarian', 'img/profile/pranta95.jpg', 'pranta95', 'Pra', 'Protik', 'pranta.cseku@gmail.com', '$2y$10$RgI1Kn1tZby/7brDMoAjZeSOXpxcdxP6u1JeTOz/O/7znhXvPFHtm', '1990-12-31', 'Male', 'Khulna', '213123', 1, 'hi4JCK1I2bRfOwCItMWbCurlVPGuTqnOS89RRdhZLnBvVSHutnPsBP1CTiUV', '2017-10-03 12:41:28', '2017-10-11 13:38:24'),
-(18, 'Member', 'img/profile/pranta97.jpg', 'pranta97', 'Pranta', 'Protik', 'pranta@gmail.com', '$2y$10$iioCnltPXo7d8Ljn7JbqbeQ4VDuh/tdSUs1DJa4qIDDSW8Rz14hgi', '2002-12-31', 'Male', 'Khulna', '012155645663', 0, '0fgo1t90LNz1AJz8pcOr7h0PvFhYLs1kqxVWqc37N12aDEQsBtI5OYFqdPCY', '2017-10-03 14:54:03', '2017-10-30 07:13:35'),
-(21, 'Member', NULL, 'nsakeef', 'Nazmus', 'Sakeef', 'nazmussakeef1700@gmail.com', '$2y$10$xdQzbQqtAKoLX95coUZY9OrqIxPeYeumc/JXx8r6.83UenLk493lK', '2017-10-04', 'Male', 'KUfsfsjoflksof', '01521439395', 1, 'F8K625uoFgFywkQdyeKwLImYoW9PSKfFvKwInrq5g7aDZENYFOr7SukEh8Ac', '2017-10-24 23:14:37', '2017-10-24 23:14:56'),
+(18, 'Member', 'img/profile/pranta97.jpg', 'pranta97', 'Pranta', 'Protik', 'pranta@gmail.com', '$2y$10$iioCnltPXo7d8Ljn7JbqbeQ4VDuh/tdSUs1DJa4qIDDSW8Rz14hgi', '2002-12-31', 'Male', 'Khulna', '012155645663', 1, 'hdbmhhJXL32JEBSMBhn4BGNFb8UdSpOx80dC46QU7UxLQfoSn8h8TfNUKWNj', '2017-10-03 14:54:03', '2017-11-02 07:04:31'),
+(21, 'Member', NULL, 'nsakeef', 'Nazmus', 'Sakeef', 'nazmussakeef1700@gmail.com', '$2y$10$xdQzbQqtAKoLX95coUZY9OrqIxPeYeumc/JXx8r6.83UenLk493lK', '2017-10-04', 'Male', 'KUfsfsjoflksof', '01521439395', 0, 'F8K625uoFgFywkQdyeKwLImYoW9PSKfFvKwInrq5g7aDZENYFOr7SukEh8Ac', '2017-10-24 23:14:37', '2017-11-02 07:14:52'),
 (22, 'Librarian', 'img/profile/admin.jpg', 'admin', 'Admin', 'Admin', 'admin@admin.com', '$2y$10$D.rhgj4ZcjnwMmBRLtHj4eMxvSP9g82ahwCUAmXOEo8wQgvtxw9xC', '2017-10-04', 'Male', 'Khulna', '012155645663', 1, 'nofUCcEDMXO4kVmjQ2y46tLQvZJugNUYHUL18QM839KQT0EMccfONK3W4XOh', '2017-10-25 00:22:14', '2017-10-25 00:23:37'),
-(23, 'Member', NULL, 'member', 'Member', 'Member', 'member@member.com', '$2y$10$MvM4Wd2Tvs67FyKSqxkjouBnrFouVmvmIaMH9nWAl6d1MIl7V96He', '2017-10-05', 'Male', 'Khulna', '012155645663', 1, 'EmzUgC4LfzPPLzTjU4RMoCnJsdfBNaxMdkDZLONzqE27dL7juVq0uDInnpl6', '2017-10-25 00:23:01', '2017-10-30 07:21:50');
+(23, 'Member', NULL, 'member', 'Member', 'Member', 'member@member.com', '$2y$10$MvM4Wd2Tvs67FyKSqxkjouBnrFouVmvmIaMH9nWAl6d1MIl7V96He', '2017-10-05', 'Male', 'Khulna', '012155645663', 1, 'nEDqPv8l1NnLqv9HR8tSZE964etuR8sPMHas1kejKVRUOMvkKM3DffumquvW', '2017-10-25 00:23:01', '2017-11-02 07:16:16');
 
 --
 -- Indexes for dumped tables
@@ -418,7 +419,7 @@ ALTER TABLE `authors`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `categories`
 --
@@ -428,12 +429,12 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `copies`
 --
 ALTER TABLE `copies`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `issues`
 --
 ALTER TABLE `issues`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `languages`
 --
