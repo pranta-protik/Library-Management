@@ -101,6 +101,9 @@ class BookController extends Controller
         }
         $book=Book::findOrFail($id);
         if (isset($_POST['delete'])){
+            if (file_exists($book->bookImage)){
+                \File::delete($book->bookImage);
+            }
             $book->delete();
             return redirect('\browse');
         }

@@ -33,6 +33,9 @@ class ApproveController extends Controller
 
     public function delete($id){
         $user=User::findOrFail($id);
+        if (file_exists($user->image)){
+            \File::delete($user->image);
+        }
         $user->delete();
         return redirect('/approve');
     }
