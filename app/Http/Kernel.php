@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\LibrarianAuthentication;
+use App\Http\Middleware\MemberAuthentication;
 use App\Http\Middleware\RoleAuthentication;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -59,5 +61,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'role'=>RoleAuthentication::class,
+        'member'=>MemberAuthentication::class,
+        'librarian'=>LibrarianAuthentication::class,
     ];
 }

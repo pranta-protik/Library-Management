@@ -12,7 +12,7 @@ class NewInfoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('librarian');
     }
 
     public function index(){

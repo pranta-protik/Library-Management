@@ -46,7 +46,9 @@ class BookController extends Controller
         $available=$available1->copy-$available2;
 
         //Eligible
-        $eligible=Issue::where('user_id',auth()->user()->id)->count();
+        if (auth()->user()){
+            $eligible=Issue::where('user_id',auth()->user()->id)->count();
+        }
 
         return view('book',compact('book','authorList','authors','language','languages','category','categories','publication','publications','type','types','copy','available','eligible'));
     }

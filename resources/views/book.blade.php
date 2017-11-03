@@ -11,7 +11,7 @@
                 <div class="panel myPanel">
                     <div class="panel-body text-center">
                         <form action="/book/{{ $book->id }}" method="post" enctype="multipart/form-data" id="frm">
-                            @if(auth()->user()->role=="Librarian")
+                            @if(auth()->user()&&auth()->user()->role=="Librarian")
                             <input type="hidden" name="_method" id="method_field">
                             @endif
                             {{ csrf_field() }}
@@ -40,16 +40,20 @@
                                     </div>
                                 </div>
                             </div>
-                                @if(auth()->user()->role=="Librarian")
+                                @if(auth()->user()&&auth()->user()->role=="Librarian")
                             <div class="col-md-offset-11">
                                 <button type="submit" class="btn btn-danger" name="delete" id="danger" onclick="deleteJS();">&#10006;</button>
                             </div>
                                 @endif
                             <div class="containerProfile col-md-offset-3">
-                                <a data-toggle="modal" data-target="#myModal" href="#"><img class="book-cover" src="{{ asset($book->bookImage) }}" alt="Profile"></a>
+                                @if(auth()->user()&&auth()->user()->role=="Librarian")
+                                <a data-toggle="modal" data-target="#myModal" href="#"><img class="book-cover" src="{{ asset($book->bookImage) }}" alt="Cover"></a>
                                 <div class="middleProfile">
                                     <a data-toggle="modal" data-target="#myModal" href="#" class="footer-ref">Change</a>
                                 </div>
+                                    @else
+                                    <a href="#"><img class="book-cover" src="{{ asset($book->bookImage) }}" alt="Cover"></a>
+                                    @endif
                             </div>
 
                             {{--BookName--}}
@@ -86,9 +90,11 @@
                                         @foreach($authors as $author)
                                             <p>
                                                 {{ $author->authorName }}
+                                                @if(auth()->user()&&auth()->user()->role=="Librarian")
                                                 <span style="margin-left: 5vh">
                                                     <button class="btn btn-link" style="text-decoration: none;color: darkred" name="delAuthor" id="btnAuthor" type="submit" value="{{ $author->id }}" onclick="delJS();">&#10006;</button>
                                                 </span>
+                                                    @endif
                                             </p>
                                         @endforeach
                                     </div>
@@ -218,7 +224,7 @@
                                 </div>
                             </div>
 
-                            @if(auth()->user()->role=="Librarian")
+                            @if(auth()->user()&&auth()->user()->role=="Librarian")
                             {{--Edit--}}
                             <div class="form-group col-md-12">
                                 <hr>
@@ -230,7 +236,7 @@
                                 </div>
                             </div>
                                 @else
-                                @if($available>1&&\App\Type::find($book->type_id)->typeName=="Open")
+                                @if($available>1&&\App\Type::find($book->type_id)->typeName=="Open"&&auth()->user()&&auth()->user()->role=="Member"&&$eligible<3)
                             <div class="form-group col-md-12">
                                 <hr>
                                 <button type="submit" class="btn btn-primary" name="borrow" id="borrow" onclick="borrowJS();">Borrow</button>

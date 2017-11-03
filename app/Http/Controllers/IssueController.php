@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class IssueController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('librarian');
+    }
+
     public function index(){
         $issues=Issue::orderBy('issueDate','desc')->paginate(10);
         return view('admin.issue',compact('issues'));

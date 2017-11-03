@@ -50,7 +50,7 @@
                     <br>
                 </div>
             </div>
-            @if(auth()->user()->role=="Member")
+            @if(auth()->user()&&auth()->user()->role=="Member")
             <div class="col-md-3">
                 <div class="card">
                     <a href="{{ route('borrow') }}" class="card-a">
